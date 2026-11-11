@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#101211" />
+  <title>COUNTER STRIKE 3D — Dustline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game-shell">
+    <canvas id="game" aria-label="First person tactical shooter game"></canvas>
+    <div class="vignette"></div>
+    <div id="start-screen" class="screen visible">
+      <div class="topline"><span class="brand-mark">CS<span>3</span></span><span class="top-label">TACTICAL OPERATIONS <i>///</i> TRAINING SIM</span><span class="version">BUILD 1.04&nbsp;&nbsp; / &nbsp;&nbsp;ONLINE</span></div>
+      <div class="start-content">
+        <div class="eyebrow"><span class="pulse"></span> OPERATION 07&nbsp; · &nbsp;ACTIVE ZONE</div>
+        <h1>COUNTER<br><span>STRIKE</span><b>3D</b></h1>
+        <div class="subtitle">DUSTLINE</div>
+        <p class="brief">A hostile squad has taken control of the old border facility.<br>Clear the site. No backup is coming.</p>
+        <div class="mission-card"><div class="mission-icon">⌖</div><div><small>MISSION OBJECTIVE</small><strong>ELIMINATE ALL HOSTILES</strong></div><div class="mission-count">05 <span>ENEMIES</span></div></div>
+        <button id="deploy" class="deploy-btn"><span>DEPLOY TO THE FIELD</span><b>↗</b></button>
+        <div class="menu-hint">WASD <span>MOVE</span><i>·</i> MOUSE <span>AIM</span><i>·</i> CLICK <span>FIRE</span></div>
+      </div>
+      <div class="bottomline"><span>DESERT FRONT // SECTOR 4</span><span>TACTICAL RESPONSE DIVISION</span><span>© FIELD SYSTEMS</span></div>
+    </div>
+    <div id="hud" class="hidden">
+      <header class="hud-top">
+        <div class="hud-brand"><span class="brand-mark">CS<span>3</span></span><div><b>COUNTER STRIKE</b><small>TACTICAL SIMULATION</small></div></div>
+        <div class="round-info"><small>MISSION 07</small><b id="mission-state">CLEAR THE SITE</b></div>
+        <div class="timer"><span class="timer-dot"></span><span id="clock">02:00</span><small>TIME REMAINING</small></div>
+      </header>
+      <div class="objective-banner"><span class="obj-icon">⌖</span><span>ELIMINATE HOSTILE FORCES</span><b id="objective-count">05 / 05</b></div>
+      <div class="crosshair" id="crosshair"><i></i><i></i><i></i><i></i><b></b></div>
+      <div id="hitmarker">✕</div>
+      <div id="damage-flash"></div>
+      <div class="kill-feed" id="kill-feed"></div>
+      <div class="left-hud">
+        <div class="radar-wrap"><div class="radar-label">SECTOR <b>04</b><span>LIVE</span></div><canvas id="radar" width="152" height="152"></canvas><div class="radar-bottom">N <span>◉</span> SITE A</div></div>
+        <div class="status-row"><div class="status-icon">✚</div><div class="status-info"><small>VITALS</small><b id="health-value">100</b></div><div class="bar"><i id="health-bar"></i></div></div>
+        <div class="status-row armor-row"><div class="status-icon">⬟</div><div class="status-info"><small>ARMOR</small><b id="armor-value">100</b></div><div class="bar"><i id="armor-bar"></i></div></div>
+      </div>
+      <div class="center-message" id="center-message"></div>
+      <div class="bottom-hud">
+        <div class="weapon-panel"><div class="weapon-label"><small>PRIMARY WEAPON</small><b id="weapon-name">M4A1-S</b></div><div class="weapon-art" id="weapon-art">╱━▰━━━╸</div><div class="weapon-slot">01 <span>●</span></div></div>
+        <div class="ammo-panel"><div class="ammo"><strong id="ammo-current">30</strong><span>/</span><b id="ammo-reserve">90</b></div><small>5.56 × 45 MM</small><div class="ammo-state" id="ammo-state">READY</div></div>
+      </div>
+      <div class="controls-tip" id="controls-tip"><kbd>W A S D</kbd> MOVE <kbd>SHIFT</kbd> SPRINT <kbd>R</kbd> RELOAD <kbd>1 / 2</kbd> WEAPON</div>
+      <div class="mobile-controls" id="mobile-controls"><button id="mobile-fire">FIRE</button><button id="mobile-reload">↻</button><button id="mobile-run">RUN</button></div>
+      <div class="pause-overlay" id="pause-overlay"><div><small>FIELD PAUSED</small><h2>TAKE A BREATH.</h2><p>Press <kbd>ESC</kbd> to return to the operation</p><button id="resume">RESUME MISSION <b>↗</b></button></div></div>
+      <div class="end-overlay" id="end-overlay"><div class="end-card"><div id="end-kicker" class="eyebrow">OPERATION COMPLETE</div><h2 id="end-title">SITE SECURED.</h2><p id="end-copy">The sector is clear. Good work, operator.</p><div class="end-stats"><div><small>HOSTILES</small><b id="end-kills">05</b></div><div><small>ACCURACY</small><b id="end-accuracy">100%</b></div><div><small>TIME</small><b id="end-time">00:00</b></div></div><button id="play-again" class="deploy-btn"><span>DEPLOY AGAIN</span><b>↻</b></button></div></div>
+    </div>
+    <div class="toast" id="toast"></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
